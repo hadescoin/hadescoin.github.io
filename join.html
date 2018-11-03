@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <link href="css/mui.min.css" rel="stylesheet"/>
+</head>
+<style>
+.lotHeader{
+	background: #C00;
+}
+.lotHeader h1{
+	color: #FFF;
+}
+.lotHeader .mui-btn-link {
+	color:#FFF;
+}
+.guide,.lots {
+	margin-top: 10px;
+	background: #FFF;
+}
+.guide img{margin: 0 auto;width: 50%;display: block;}
+.guide p{text-align: center;}
+.refer {
+	background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);
+	background-size: 400% 400%;
+	animation: Gradient 15s ease infinite;
+	min-height: 100vh;
+}
+@keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+</style>
+<body>
+	<header class="mui-bar mui-bar-nav lotHeader">
+		<a class="mui-action-back mui-btn mui-btn-link mui-btn-nav mui-pull-left"><span class="mui-icon mui-icon-left-nav"></span>返回</a>
+		<h1 class="mui-title">成为代理</h1>
+	</header>
+	<nav class="mui-bar mui-bar-tab" id="bottomNav">
+	    <a href="./index.html" class="mui-tab-item mui-active">
+	        <span class="mui-icon mui-icon-home"></span>
+	        <span class="mui-tab-label">首页</span>
+	    </a>
+	    <a href="./order.html" class="mui-tab-item">
+	        <span class="mui-icon mui-icon-order"></span>
+	        <span class="mui-tab-label">我的注单</span>
+	    </a>
+	    <a href="./agent.html" class="mui-tab-item">
+	        <span class="mui-icon mui-icon-person"></span>
+	        <span class="mui-tab-label">代理收入</span>
+	    </a>
+	    <a href="./faq.html" class="mui-tab-item">
+	        <span class="mui-icon mui-icon-sort"></span>
+	        <span class="mui-tab-label">帮助中心</span>
+	    </a>
+	</nav>
+	<div id="app" class="mui-content" v-bind:class="code ? 'refer' : ''">
+		<div v-if="web3===undefined" class="mui-text-center mui-content-padded">
+    		<span class="mui-icon mui-icon-close" style="font-size: 5em;"></span>
+    		<button type="button" class="mui-btn mui-btn-blue mui-btn-block">
+    			请下载或登陆APP
+    		</button>
+    	</div>
+    	<div v-else-if="account===undefined" class="mui-text-center mui-content-padded">
+    		<span class="mui-icon mui-icon-close" style="font-size: 5em;"></span>
+    		<p>未检测到您的ETH账号,请确认登陆</p>
+    	</div>
+    	<div v-else-if="code==0 && reged" class="mui-text-center mui-content-padded">
+    		<span class="mui-icon mui-spinner" style="font-size: 5em;"></span>
+    		<p>您已登记，正在生成你的专属邀请码。
+    			<br>请等待2分钟左右。
+    		</p>
+    	</div>
+    	<div v-else-if="code==0 && !reged" class="mui-content-padded">
+    		<h3>成为代理</h3>
+	    	<p>平台提供行内最具竞争力的丰厚返点。</p>
+	    	<h4>返点比例：</h4>
+	    	<p>代理机制为2级制，分别是12%+6%。<br>
+	    	例： 用户C的上级是B，B的上级为是A，<br>
+	    	用户C每投100ETH，B收入12ETH,A收入6ETH。</p>
+	    	
+	    	<h4>市场保护：</h4>
+	    	<p>为鼓励用户登记自己的代理，帮助代理开拓市场，设立中奖返点2%。<br>
+	    	 即：如果用户登记为代理，则中奖奖金+2%。<br>
+	    	 例：用户中奖100 ETH，则额外奖励该用户 2 ETH。</p>
+    		<h4>立即登记为代理：</h4>
+	    	<p>
+	    		注册成功后，中奖金额提升2%。<br>
+	    		并可通过邀请码赚返点。
+	    	</p>
+	    	<form class="mui-input-group">
+				<div class="mui-input-row">
+					<label>邀请码：</label>
+					<input type="number" placeholder="6位数字邀请码" v-model="refer">
+				</div>
+				<div class="mui-input-row">
+					<label>ETH地址：</label>
+					<input type="text" placeholder="用于收返点的ETH地址" v-model="account" readonly>
+				</div>
+				<div class="mui-button-row">
+					<button class="mui-btn mui-btn-primary" type="button" v-on:click="reg()">&nbsp;&nbsp;登记为代理&nbsp;&nbsp;</button>
+				</div>
+			</form>
+    	</div> 
+    	<div v-else-if="code>0" class="mui-content-padded">
+    		<div class="mui-card mui-text-center">
+				<p><input style="position: absolute;z-index: -99;" id="refercode" v-model="code" readonly />
+					<br />
+					<span style="color: orangered;font-size: 1.5em;vertical-align:middle;">区块彩，公平博彩平台！</span>
+				</p>
+				<h4>我的邀请码</h4>
+				<h3>
+					<span style="color: orangered;font-size: 2em;vertical-align:middle;" >{{code}}</span>
+					
+					<button type="button" class="mui-btn mui-btn-min mui-btn-green" style="vertical-align:middle;" v-on:click="copy()">复制</button>
+				</h3>
+				<div class="line"></div>
+				<p>
+					<img src="img/qr.png" alt="" />
+				</p>
+				<p>邀请好友注册，获18%交易返点。</p>
+			</div>
+    	</div> 
+    	
+	</div>
+</body>
+<script src="dist/join.js"></script>
+</html>

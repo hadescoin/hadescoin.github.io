@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <link href="css/mui.min.css" rel="stylesheet"/>
+</head>
+<style>
+.lotHeader{
+	background: #C00;
+}
+.lotHeader h1{
+	color: #FFF;
+}
+.lotHeader .mui-btn-link {
+	color:#FFF;
+}
+.guide,.lots {
+	margin-top: 10px;
+	background: #FFF;
+}
+.guide img{margin: 0 auto;width: 50%;display: block;}
+.guide p{text-align: center;}
+</style>
+<body>
+	<header class="mui-bar mui-bar-nav lotHeader">
+		<h1 class="mui-title">帮助中心</h1>
+	</header>
+	<nav class="mui-bar mui-bar-tab" id="bottomNav">
+	    <a href="./index.html" class="mui-tab-item">
+	        <span class="mui-icon mui-icon-home"></span>
+	        <span class="mui-tab-label">首页</span>
+	    </a>
+	    <a href="./order.html" class="mui-tab-item">
+	        <span class="mui-icon mui-icon-order"></span>
+	        <span class="mui-tab-label">我的注单</span>
+	    </a>
+	    <a href="./agent.html" class="mui-tab-item">
+	        <span class="mui-icon mui-icon-person"></span>
+	        <span class="mui-tab-label">代理收入</span>
+	    </a>
+	    <a href="./faq.html" class="mui-tab-item mui-active">
+	        <span class="mui-icon mui-icon-sort"></span>
+	        <span class="mui-tab-label">帮助中心</span>
+	    </a>
+	</nav>
+	<div id="app" class="mui-content">
+		<div class="mui-card">
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell mui-collapse">
+					<a class="mui-navigate-right" href="#">为什么没有用户名密码?</a>
+					<p class="mui-collapse-content">
+							区块链的最大特点就是“去中心化”，没有中心服务器保存用户的账户。<br>
+							ETH资产保持在用户自己的钱包软件里，因此不需要密码。
+					</p>
+				</li>
+				<li class="mui-table-view-cell mui-collapse">
+					<a class="mui-navigate-right" href="#">资金安全吗?</a>
+					<p class="mui-collapse-content">
+							十分安全。<br>
+							传统的平台，服务器一旦被黑，则意味着客户信息泄露、资产被盗。<br>
+							而本平台的信息都区块链上，没有任何私有信息。即使平台被黑客攻破，黑客也无法获取任何资产。
+					</p>
+				</li>
+				<li class="mui-table-view-cell mui-collapse">
+					<a class="mui-navigate-right" href="#">中奖率高吗?</a>
+					<p class="mui-collapse-content">
+							本平台返奖率62%，比传统彩票高3%。<br>
+							如用户注册为代理，中奖后在彩金另加2%。<br />
+							总体中奖率比传统彩票高5%。
+					</p>
+				</li>
+				<li class="mui-table-view-cell mui-collapse">
+					<a class="mui-navigate-right" href="#">兑奖速度快吗?</a>
+					<p class="mui-collapse-content">
+						快！<br>
+						平台基于以太币公链的智能合约自动打款，开奖即到账。<br>
+						开奖的同时，中奖用户的彩金即可收到以太币（ETH）。<br>	
+					</p>
+				</li>
+				<li class="mui-table-view-cell mui-collapse">
+					<a class="mui-navigate-right" href="#">介绍客户有返点吗?</a>
+					<p class="mui-collapse-content">
+						有业内最高的返点回报。<br>
+						代理提成为1级12%，2级6%。<br>
+						例： 用户C的上级是B，B的上级为是A，<br>
+	    				用户C每投100ETH，B收入12ETH,A收入6ETH。
+					</p>
+				</li>
+				<li class="mui-table-view-cell mui-collapse">
+					<a class="mui-navigate-right" href="#">有官方客服吗?</a>
+					<p class="mui-collapse-content">
+						平台没有客服，但区块彩项目在美国和东南亚已经有非常多的爱好者在参与。<br>
+						你可加入区块彩交流群。
+					</p>
+				</li>
+			</ul>
+		</div>
+	</div>
+</body>
+<script src="dist/mui.min.js"></script>
+<script>
+window.addEventListener('load',function(){
+	mui.init();
+	mui('#bottomNav').on('tap' , 'a' , function(){
+		window.location.href = this.href;
+	});
+});
+</script>
+</html>

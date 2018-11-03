@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <link href="css/mui.min.css" rel="stylesheet"/>
+</head>
+<style>
+.lotHeader{
+	background: #C00;
+}
+.lotHeader h1{
+	color: #FFF;
+}
+.lotHeader .mui-btn-link {
+	color:#FFF;
+}
+.guide,.lots {
+	margin-top: 10px;
+	background: #FFF;
+}
+.guide img{margin: 0 auto;width: 50%;display: block;}
+.guide p{text-align: center;}
+</style>
+<body>
+	<header class="mui-bar mui-bar-nav lotHeader">
+		<a class="mui-action-back mui-btn mui-btn-link mui-btn-nav mui-pull-left"><span class="mui-icon mui-icon-left-nav"></span>返回</a>
+		<h1 class="mui-title">平台介绍</h1>
+	</header>
+	<nav class="mui-bar mui-bar-tab" id="bottomNav">
+	    <a href="./index.html" class="mui-tab-item mui-active">
+	        <span class="mui-icon mui-icon-home"></span>
+	        <span class="mui-tab-label">首页</span>
+	    </a>
+	    <a href="./order.html" class="mui-tab-item">
+	        <span class="mui-icon mui-icon-order"></span>
+	        <span class="mui-tab-label">我的注单</span>
+	    </a>
+	    <a href="./agent.html" class="mui-tab-item">
+	        <span class="mui-icon mui-icon-person"></span>
+	        <span class="mui-tab-label">代理收入</span>
+	    </a>
+	    <a href="./faq.html" class="mui-tab-item">
+	        <span class="mui-icon mui-icon-sort"></span>
+	        <span class="mui-tab-label">帮助中心</span>
+	    </a>
+	</nav>
+	<div id="app" class="mui-content mui-content-padded">
+    	<h3>区块彩 - 透明博彩平台</h3>
+    	<p>区块彩是世界上透明度最好的博彩平台。</p>
+	    <h4>+公平性说明</h4>
+	   	<p>项目运行于以太坊(ETH)公链上，用户的第一笔投注都对应一笔ETH交易，并由权威的随机数平台Oraclize定期生成开奖结果。<br>
+	   		以太坊智能合约自动转以太币到中奖用户，及自动转以太币到代理商。</p>
+	 
+	  	<p>由于区块链 不可篡改，不可逆的特性，保证了平台没有任何人可以操控。 通俗的说：只有规则，没有庄家，没有黑幕。</p> 
+	    <h4>+ 返奖率</h4>
+	    <p>返奖率为62%，高于传统博彩行业3个百分点。</p> 
+	    <h4>+ 彩种设置</h4>
+	   	<p>当前彩种支持 快三、3D、11选5，美国强力球。即将支持足球博彩，敬请期待。</p> 
+	    <h4>+ 价格说明</h4>
+	    <p>本平台基础货币以太币（ETH）。记0.001ETH为单位元。例，快三项目每注售价2元，即0.002ETH。<br>
+	                      同理，用户中奖240元，即得0.024ETH。</p> 
+	    <h4>+ 倍投限制</h4>
+	    <p>倍投最大为100倍。</p> 
+	    <h4>+ 免责声明</h4>
+	    <p>1. 本平台不存储用户密码及用户资产，请用户妥善管理自己的ETH钱包。<br>
+	    2. 合理投资，切勿沉迷。
+	    </p> 
+	</div>
+</body>
+<script src="dist/mui.min.js"></script>
+<script>
+window.addEventListener('load',function(){
+	mui.init();
+	mui('#bottomNav').on('tap' , 'a' , function(){
+		window.location.href = this.href;
+	});
+});
+</script>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <link href="css/mui.min.css" rel="stylesheet"/>
+</head>
+<style>
+#app {
+	background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);
+	background-size: 400% 400%;
+	animation: Gradient 15s ease infinite;
+	min-height: 100vh;
+}
+@keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+.line {
+	border: 1px dashed #000000;
+}	
+.lotHeader{
+	background: #C00;
+}
+.lotHeader h1{
+	color: #FFF;
+}
+.lotHeader .mui-btn-link {
+	color:#FFF;
+}
+.qr{
+	text-align: center;
+}
+.qr h1 {
+	color: #FFF;
+}
+.qr img {
+	width: 40%;
+	max-width: 360px;
+}
+.down {
+	text-align: center;
+}
+.down img {
+	width: 80%;
+	max-width: 400px;
+}
+.step {
+	background: #FFF;
+	text-align: center;
+}
+.step img {
+	width: 100%;
+	max-width: 640px;
+}
+</style>
+<body>
+	<header class="mui-bar mui-bar-nav lotHeader">
+		<a class="mui-action-back mui-btn mui-btn-link mui-btn-nav mui-pull-left" href="index.html"><span class="mui-icon mui-icon-left-nav"></span>返回</a>
+		<h1 class="mui-title">区块彩</h1>
+	</header>
+	<div id="app" class="mui-content">	
+		<div class="qr">
+			<br><br>
+			<img src="./img/downqr.png" alt="" />
+			<h1>可扫码下载</h1>
+			<br><br>
+		</div>
+		<p class="down">
+			<a href="">
+			<img src="./img/android.png" alt="" />
+			</a>
+		</p>
+		<p class="down">
+			<a href="#stepa" id="ios">
+			<img src="./img/ios.png" alt="" />
+			</a>
+		</p>
+		<div class="step" id="stepa" style="display: none;">
+			<p>
+				iPhone手机安装后请打开手机设置<br>
+				通用-设备管理-选择-信任 才能使用<br>
+				可参照以下图文步骤进行操作</p>
+			<img src="./img/down-1.png" alt="" /><br><br>
+			<img src="./img/down-2.png" alt="" /><br><br>
+			<img src="./img/down-3.png" alt="" /><br><br>
+			<img src="./img/down-4.png" alt="" />
+		</div>
+	</div>
+</body>
+<script>
+document.getElementById('ios').onclick = function() {
+	document.getElementById('stepa').style.display = 'block';
+}
+</script>
+</html>

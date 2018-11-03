@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <link href="css/mui.min.css" rel="stylesheet"/>
+</head>
+<style>
+.lotHeader{
+	background: #C00;
+}
+.lotHeader h1{
+	color: #FFF;
+}
+.lotHeader .mui-btn-link {
+	color:#FFF;
+}
+.guide,.lots {
+	margin-top: 10px;
+	background: #FFF;
+}
+.guide img{margin: 0 auto;width: 50%;display: block;}
+.guide p{text-align: center;}
+.no-record{
+	width:40%;
+}
+[v-cloak] {
+   display:none;
+}
+</style>
+<body>
+	<header class="mui-bar mui-bar-nav lotHeader">
+		<h1 class="mui-title">我的注单</h1>
+	</header>
+	<nav class="mui-bar mui-bar-tab" id="bottomNav">
+	    <a href="./index.html" class="mui-tab-item">
+	        <span class="mui-icon mui-icon-home"></span>
+	        <span class="mui-tab-label">首页</span>
+	    </a>
+	    <a href="./order.html" class="mui-tab-item mui-active">
+	        <span class="mui-icon mui-icon-order"></span>
+	        <span class="mui-tab-label">我的注单</span>
+	    </a>
+	    <a href="./agent.html" class="mui-tab-item">
+	        <span class="mui-icon mui-icon-person"></span>
+	        <span class="mui-tab-label">代理收入</span>
+	    </a>
+	    <a href="./faq.html" class="mui-tab-item">
+	        <span class="mui-icon mui-icon-sort"></span>
+	        <span class="mui-tab-label">帮助中心</span>
+	    </a>
+	</nav>
+	<div id="app" class="mui-content" v-cloak>
+		<div style="padding: 10px 10px;">
+			<div id="segmentedControl" class="mui-segmented-control mui-segmented-control-inverted mui-segmented-control-primary">
+				<a class="mui-control-item mui-active" href="#item1">全部注单</a>
+				<a class="mui-control-item" href="#item2">已中奖</a>
+			</div>
+		</div>
+		<div v-if="web3===undefined" class="mui-text-center">
+    		<span class="mui-icon mui-icon-close" style="font-size: 5em;"></span>
+    		<button type="button" class="mui-btn mui-btn-blue mui-btn-block">
+    			请下载或登陆APP
+    		</button>
+    	</div>
+    	<div v-else-if="account===undefined" class="mui-text-center">
+    		<span class="mui-icon mui-icon-close" style="font-size: 5em;"></span>
+    		<p>未检测到您的ETH账号,请确认登陆</p>
+    	</div>
+		<div v-else class="mui-card">
+			<div id="item1" class="mui-control-content mui-active">
+				<ul class="mui-table-view" v-if="chips.length>0" v-cloak>
+					<li class="mui-table-view-cell mui-media" v-for="c in chips">
+						<img class="mui-media-object mui-pull-left" :src="'img/'+c.product+'.png'">
+						<div class="mui-media-body">
+							{{c.mul.toNumber()}}倍{{c.num}} 
+							<p class="mui-ellipsis">第 {{c.seq.toNumber()}} 期</p>
+						</div>
+					</li>
+				</ul>
+				<div v-else class="mui-text-center">
+					<br>
+					<img class="no-record" src="img/no-record.png" alt="" />
+					<p><br>没有记录<br></p>
+					
+				</div>
+			</div>
+			<div id="item2" class="mui-control-content">
+				<ul class="mui-table-view" v-if="chips.length>0">
+					<li class="mui-table-view-cell" v-for="b in bonus">
+						+ {{web3.fromWei(b.profit,'finney').toNumber()}}元{{new Date(b.timestamp.toNumber()*1000).toLocaleString()}},{{b.seq}}
+					</li>
+				</ul>
+				<div v-else class="mui-text-center">
+					<br>
+					<img class="no-record" src="img/no-record.png" alt="" />
+					<p><br>没有记录<br></p>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="dist/order.js"></script>
+</html>

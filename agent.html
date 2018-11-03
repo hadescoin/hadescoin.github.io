@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <link href="css/mui.min.css" rel="stylesheet"/>
+</head>
+<style>
+.lotHeader{
+	background: #C00;
+}
+.lotHeader h1{
+	color: #FFF;
+}
+.lotHeader .mui-btn-link {
+	color:#FFF;
+}
+.guide,.lots {
+	margin-top: 10px;
+	background: #FFF;
+}
+.guide img{margin: 0 auto;width: 50%;display: block;}
+.guide p{text-align: center;}
+.no-record{
+	width:40%;
+}
+[v-cloak] {
+   display:none;
+}
+</style>
+<body>
+	<header class="mui-bar mui-bar-nav lotHeader">
+		<h1 class="mui-title">代理收入</h1>
+	</header>
+	<nav class="mui-bar mui-bar-tab" id="bottomNav">
+	    <a href="./index.html" class="mui-tab-item">
+	        <span class="mui-icon mui-icon-home"></span>
+	        <span class="mui-tab-label">首页</span>
+	    </a>
+	    <a href="./order.html" class="mui-tab-item">
+	        <span class="mui-icon mui-icon-order"></span>
+	        <span class="mui-tab-label">我的注单</span>
+	    </a>
+	    <a href="./agent.html" class="mui-tab-item mui-active">
+	        <span class="mui-icon mui-icon-person"></span>
+	        <span class="mui-tab-label">代理收入</span>
+	    </a>
+	    <a href="./faq.html" class="mui-tab-item">
+	        <span class="mui-icon mui-icon-sort"></span>
+	        <span class="mui-tab-label">帮助中心</span>
+	    </a>
+	</nav>
+	<div id="app" class="mui-content">
+		<div class="mui-content-padded" v-cloak>
+	    	<div v-if="web3===undefined" class="mui-text-center">
+	    		<span class="mui-icon mui-icon-close" style="font-size: 5em;"></span>
+	    		<button type="button" class="mui-btn mui-btn-blue mui-btn-block">
+	    			请下载或登陆APP
+	    		</button>
+	    	</div>
+	    	<div v-else-if="account===undefined" class="mui-text-center">
+	    		<span class="mui-icon mui-icon-close" style="font-size: 5em;"></span>
+	    		<p>未检测到您的ETH账号,请确认登陆</p>
+	    	</div>
+	    	<div v-else-if="code==0" class="mui-text-center">
+	    		<span class="mui-icon mui-icon-close" style="font-size: 5em;"></span>
+	    		<p>您当前还不是代理</p>
+	    		<a href="">立即成功代理</a>
+	    	</div>
+	    	<div v-else-if="profits.length==0" class="mui-text-center">
+				<br>
+				<img class="no-record" src="img/no-record.png" alt="" />
+				<p><br>没有返点，抓紧宣传啊！<br></p>
+	    	</div>
+	    	<div v-else-if="profits.length>0">
+	    		<ul class="mui-table-view">
+					<li class="mui-table-view-cell mui-media" v-for="p in profits">
+						<img class="mui-media-object mui-pull-left" src="./img/coin.png">
+						<div class="mui-media-body">
+							+ {{web3.fromWei(p.profit,'finney').toNumber()}}元
+							<p class="mui-ellipsis">{{new Date(p.timestamp.toNumber()*1000).toLocaleString()}}</p>
+						</div>
+					</li>
+				</ul>
+	    	</div>
+	    </div>
+	</div>
+</body>
+<script src="dist/agent.js"></script>
+</html>

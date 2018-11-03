@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <link href="css/mui.min.css" rel="stylesheet"/>
+</head>
+<style>
+.lotHeader{
+	background: #C00;
+}
+.lotHeader h1{
+	color: #FFF;
+}
+.lotHeader .mui-btn-link {
+	color:#FFF;
+}
+.guide,.lots {
+	margin-top: 10px;
+	background: #FFF;
+}
+li:nth-last-child(2):after{
+	height: 0;
+	border: none;
+}
+li:nth-last-child(3):after{
+	height: 0;
+	border: none;
+}
+.guide img{margin: 0 auto;width: 50%;display: block;}
+.guide p{text-align: center;}
+</style>
+<body>
+	<header class="mui-bar mui-bar-nav lotHeader">
+		<a class="mui-action-back mui-btn mui-btn-link mui-btn-nav mui-pull-left mui-hidden"><span class="mui-icon mui-icon-left-nav"></span>返回</a>
+		<h1 class="mui-title">区块彩</h1>
+	</header>
+	<nav class="mui-bar mui-bar-tab" id="bottomNav">
+	    <a href="./index.html" class="mui-tab-item mui-active">
+	        <span class="mui-icon mui-icon-home"></span>
+	        <span class="mui-tab-label">首页</span>
+	    </a>
+	    <a href="./order.html" class="mui-tab-item">
+	        <span class="mui-icon mui-icon-order"></span>
+	        <span class="mui-tab-label">我的注单</span>
+	    </a>
+	    <a href="./agent.html" class="mui-tab-item">
+	        <span class="mui-icon mui-icon-person"></span>
+	        <span class="mui-tab-label">代理收入</span>
+	    </a>
+	    <a href="./faq.html" class="mui-tab-item">
+	        <span class="mui-icon mui-icon-sort"></span>
+	        <span class="mui-tab-label">帮助中心</span>
+	    </a>
+	</nav>
+	<div id="app" class="mui-content">
+		<div id="index">
+			<div id="slider" class="mui-slider" >
+			  <div class="mui-slider-group mui-slider-loop">
+				<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+				<div class="mui-slider-item mui-slider-item-duplicate">
+				  <a href="#">
+					<img src="img/banner3.jpg">
+				  </a>
+				</div>
+				<!-- 第一张 -->
+				<div class="mui-slider-item">
+				  <a href="#">
+					<img src="img/banner1.png">
+				  </a>
+				</div>
+				<!-- 第二张 -->
+				<div class="mui-slider-item">
+				  <a href="#">
+					<img src="img/banner2.jpg">
+				  </a>
+				</div>
+				<!-- 第三张 -->
+				<div class="mui-slider-item">
+				  <a href="#">
+					<img src="img/banner3.jpg">
+				  </a>
+				</div>
+				<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+				<div class="mui-slider-item mui-slider-item-duplicate">
+				  <a href="#">
+					<img src="img/banner1.png">
+				  </a>
+				</div>
+			  </div>
+			  <div class="mui-slider-indicator">
+				<div class="mui-indicator mui-active"></div>
+				<div class="mui-indicator"></div>
+				<div class="mui-indicator"></div>
+			  </div>
+			</div>
+			<div class="mui-row guide">
+				<div class="mui-col-xs-3">
+					<a href="./intro.html">
+					<img src="img/youshi.png" alt="">
+					<p>平台介绍</p>
+					</a>
+				</div>
+				<div class="mui-col-xs-3">
+					<a href="./download.html">
+					<img src="img/app.png" alt="">
+					<p>APP下载</p>
+					</a>
+				</div>
+				<div class="mui-col-xs-3">
+					<a href="./faq.html">
+					<img src="img/crj.png" alt="">
+					<p>出金入金</p>
+					</a>
+				</div>
+				<div class="mui-col-xs-3">
+					<a href="./join.html">
+					<img src="img/agent.png" alt="">
+					<p>成为代理</p>
+					</a>
+				</div>
+			</div>
+			<ul class="mui-table-view mui-row lots">
+				<li class="mui-table-view-cell mui-media mui-col-xs-6">
+					<a href="./q3d.html">
+						<img class="mui-media-object mui-pull-left" src="img/Q3D.png">
+						<div class="mui-media-body">
+							幸运快3
+							<p class="mui-ellipsis">10分钟一期</p>
+						</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-6">
+					<a href="./f3d.html">
+						<img class="mui-media-object mui-pull-left" src="img/F3D.png">
+						<div class="mui-media-body">
+							快乐3D
+							<p class="mui-ellipsis">10分钟一期</p>
+						</div>
+					</a>
+				</li>
+				
+				<li class="mui-table-view-cell mui-media mui-col-xs-6">
+					<a href="javascript:;">
+						<img class="mui-media-object mui-pull-left" src="img/lucy28.png">
+						<div class="mui-media-body">
+							幸运28
+							<p class="mui-ellipsis">10分钟一期</p>
+						</div>
+					</a>
+				</li>
+				
+				<li class="mui-table-view-cell mui-media mui-col-xs-6">
+					<a href="javascript:;">
+						<img class="mui-media-object mui-pull-left" src="img/Football.png">
+						<div class="mui-media-body">
+							幸运足彩
+							<p class="mui-ellipsis">仅对老用户开放</p>
+						</div>
+					</a>
+				</li>
+				
+				
+				<li class="mui-table-view-cell mui-media mui-col-xs-6">
+					<a href="javascript:;">
+						<img class="mui-media-object mui-pull-left" src="img/powerball.png">
+						<div class="mui-media-body">
+							美国强力球
+							<p class="mui-ellipsis">仅对老用户开放</p>
+						</div>
+					</a>
+				</li>
+				
+				<li class="mui-table-view-cell mui-media mui-col-xs-6">
+					<a href="javascript:;">
+						<img class="mui-media-object mui-pull-left" src="img/korean.png">
+						<div class="mui-media-body">
+							韩国双色球
+							<p class="mui-ellipsis">仅对老用户开放</p>
+						</div>
+					</a>
+				</li>
+				<br style="clear: both;"/>
+			</ul>
+		</div>
+	</div>
+</body>
+<script src="dist/mui.min.js"></script>
+<script>
+window.addEventListener('load',function(){
+	mui.init();
+	mui('#bottomNav').on('tap' , 'a' , function(){
+		window.location.href = this.href;
+	});
+	mui('#slider').slider({interval: 3000});
+});
+</script>
+</html>
