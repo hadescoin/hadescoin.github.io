@@ -59,7 +59,7 @@
 	        <span class="mui-tab-label">代理收入</span>
 	    </a>
 	    <a href="./faq.html" class="mui-tab-item">
-	        <span class="mui-icon mui-icon-sort"></span>
+	        <span class="mui-icon mui-icon-help"></span>
 	        <span class="mui-tab-label">帮助中心</span>
 	    </a>
 	</nav>
@@ -113,13 +113,12 @@
     	</div> 
     	<div v-else-if="code>0" class="mui-content-padded">
     		<div class="mui-card mui-text-center">
-				<p><input style="position: absolute;z-index: -99;" id="refercode" v-model="code" readonly />
 					<br />
 					<span style="color: orangered;font-size: 1.5em;vertical-align:middle;">区块彩，公平博彩平台！</span>
 				</p>
 				<h4>我的邀请码</h4>
 				<h3>
-					<span style="color: orangered;font-size: 2em;vertical-align:middle;" >{{code}}</span>
+					<span id="refercode" style="color: orangered;font-size: 2em;vertical-align:middle;" >{{code}}</span>
 					
 					<button type="button" class="mui-btn mui-btn-min mui-btn-green" style="vertical-align:middle;" v-on:click="copy()">复制</button>
 				</h3>

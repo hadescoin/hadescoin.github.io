@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta name="format-detection" content="telephone=no">
+
+<meta http-equiv="x-rim-auto-match" content="none">
+    <title></title>
+    <link href="css/mui.min.css" rel="stylesheet"/>
+</head>
+<style>
+
+.lotHeader{
+	background: #C00;
+}
+.lotHeader h1{
+	color: #FFF;
+}
+.lotHeader .mui-btn-link {
+	color:#FFF;
+}
+.avatar {
+	width: 42px;
+	height: 42px;
+	margin: 0 .5em .5em 0;
+	background: #5d8cc2;
+	border-radius: 50%;
+	text-align: center;
+	line-height: 42px;
+	color: #FFF;
+}
+.name {
+color : #3b68bb;	
+}
+.mui-btn-lan{
+	background-color: #007aff;
+	color: #FFF;
+}
+.mui-icon-card:before{
+	content: "\e968";
+	color: #F2994A;
+	margin: 0 .2em;
+}
+.mui-icon-weixin:before{
+	color: #24AF41;
+}
+.mui-icon-alipay:before{
+	content: "\e685";
+	color: #00A0E9;
+	margin: 0 .2em;
+}
+.mui-icon-phone-filled:before {
+	color: #00A0E9;
+	/*color: #FFF;*/
+	border-radius: 50%;
+}
+#popover,#popsell{
+	height: 200px;
+	width:96%;
+	max-width: 400px;
+	word-wrap: break-word;
+}
+#popsell {
+	height: 270px;
+}
+.copy{
+	display: inline-block;
+    padding: 3px 6px;
+    font-size: 12px;
+    line-height: 1;
+    border-radius: 100px;
+}
+.cfmsell{
+	text-align: center;
+}
+</style>
+<body>
+	<header class="mui-bar mui-bar-nav lotHeader">
+		<a class="mui-action-back mui-btn mui-btn-link mui-btn-nav mui-pull-left"><span class="mui-icon mui-icon-left-nav"></span>返回</a>
+		<h1 class="mui-title">出金入金</h1>
+	</header>
+	<nav class="mui-bar mui-bar-tab" id="bottomNav">
+	    <a href="./index.html" class="mui-tab-item">
+	        <span class="mui-icon mui-icon-home"></span>
+	        <span class="mui-tab-label">首页</span>
+	    </a>
+	    <a href="./index.html#order" class="mui-tab-item">
+	        <span class="mui-icon mui-icon-order"></span>
+	        <span class="mui-tab-label">注单</span>
+	    </a>
+	    <a href="./index.html#agent" class="mui-tab-item">
+	        <span class="mui-icon mui-icon-person"></span>
+	        <span class="mui-tab-label">代理收入</span>
+	    </a>
+	    <a href="./index.html#faq" class="mui-tab-item">
+	        <span class="mui-icon mui-icon-help"></span>
+	        <span class="mui-tab-label">帮助中心</span>
+	    </a>
+	</nav>
+	<div id="app" class="mui-content">	
+		<div style="padding: 10px 10px;">
+			<div id="segmentedControl" class="mui-segmented-control mui-segmented-control-inverted mui-segmented-control-primary">
+				<a class="mui-control-item mui-active" href="#item1">买入ETH</a>
+				<a class="mui-control-item" href="#item2">卖出ETH</a>
+			</div>
+			<div id="item1" class="mui-control-content mui-active">
+				<div class="mui-card" v-for="(m,k) in mer">
+					<div class="mui-card-content mui-clearfix">
+						<div class="mui-card-content-inner">
+							<span class="mui-pull-left avatar">{{m.xm.substr(0,1)}}</span>
+							<div class="mui-pull-left">
+								<p class="name">{{m.xm}}(信誉度：99%)</p>
+								<p>
+									价格：{{price?(price*1.01).toFixed(0)+'元':'市价'}}<br>
+									限购：{{m.range}}元
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="mui-card-footer">
+						<a>
+							+ 先款后币
+						</a>
+						<button class="mui-btn mui-btn-lan" v-on:click="u($event,k)">购买</button>
+					</div>
+				</div>
+			</div>
+			<div id="item2" class="mui-control-content">
+				<div class="mui-card" v-for="(m,k) in mer">
+					<div class="mui-card-content mui-clearfix">
+						<div class="mui-card-content-inner">
+							<span class="mui-pull-left avatar">{{m.xm.substr(0,1)}}</span>
+							<div class="mui-pull-left">
+								<p class="name">{{m.xm}}(信誉度：99%)</p>
+								<p>
+									单价：{{price?(price*0.99).toFixed(0)+'元':'市价'}}
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="mui-card-footer">
+						<a>
+							+ 先币后款
+						</a>
+						<button class="mui-btn mui-btn-lan" v-on:click="s($event,k)">卖出</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="popover" class="mui-popover">
+			<div class="mui-scroll-wrapper">
+			    <div class="mui-scroll">
+				    <ul class="mui-table-view">
+				    	<li class="mui-table-view-cell">
+				    		<span class="mui-icon mui-icon-weixin"></span>
+				    		<span id="wechat">{{mer[this.i].wx}}</span>
+				    		<button type="button" class="copy mui-btn-lan" v-on:click="copy('wechat')">复制</button>
+				    	</li>
+				    	<li class="mui-table-view-cell">
+				    		<span class="mui-icon mui-icon-phone-filled"></span>
+				    		<span id="tel">{{mer[this.i].tel}}</span> 
+				    		<button type="button" class="copy mui-btn-lan" v-on:click="copy('tel')">复制</button>
+				    	</li>
+				    	<li class="mui-table-view-cell">
+				    		<p>复制ETH地址，发给卖家。<button type="button" class="copy mui-btn-lan" v-on:click="copy('myaddr')">复制</button>
+				    		</p>
+				    		<span id="myaddr">{{account}}</span>
+				    	</li>
+				    </ul>
+				</div>
+			</div>
+		</div>
+		<div id="popsell" class="mui-popover">
+			<div class="mui-scroll-wrapper">
+			    <div class="mui-scroll">
+				    <ul class="mui-table-view">
+				    	<li class="mui-table-view-cell">
+				    		<p>请与对方确认数量/价格、ETH地址，再进行转币。</p>
+				    	</li>
+				    	<li class="mui-table-view-cell">
+				    		<span class="mui-icon mui-icon-phone-filled"></span>
+				    		<span id="tel">{{mer[this.i].tel}}</span> 
+				    		&nbsp;{{mer[this.i].xm}}
+				    	</li>
+				    	<li class="mui-table-view-cell">
+				    		<p>
+				    			单价：{{price?(price*0.99).toFixed(0):0}}元，
+				    			数量：{{balance}}，
+				    			总价：{{Math.floor(price*0.99*balance)}}
+				    		</p>
+				    	</li>
+				    	<li class="mui-table-view-cell">
+				    		<p>ETH地址:<button type="button" class="copy mui-btn-lan" v-on:click="copy('selladdr')">复制</button>
+				    		<span class="selladdr">{{mer[this.i].eth}}</span>
+				    		</p>
+				    	</li>
+				    	<li class="cfmsell">
+				    		<button class="mui-btn mui-btn-lan" style="margin-top:.4em;" v-on:click="trans()">已确认，转币给卖家</button>
+				    	</li>
+				    </ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="dist/atm.js"></script>
+</html>
