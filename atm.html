@@ -166,7 +166,12 @@ color : #3b68bb;
 				    	<li class="mui-table-view-cell">
 				    		<p>复制ETH地址，发给卖家。<button type="button" class="copy mui-btn-lan" v-on:click="copy('myaddr')">复制</button>
 				    		</p>
-				    		<span id="myaddr">{{account}}</span>
+				    		<span id="myaddr" v-if="account">
+				    			{{account}}
+				    		</span>
+				    		<p class="mui-text-center" v-else>
+								<span class="mui-btn mui-btn-danger mui-btn-outlined">请登陆App</span>
+							</p>
 				    	</li>
 				    </ul>
 				</div>
@@ -197,7 +202,10 @@ color : #3b68bb;
 				    		</p>
 				    	</li>
 				    	<li class="cfmsell">
-				    		<button class="mui-btn mui-btn-lan" style="margin-top:.4em;" v-on:click="trans()">已确认，转币给卖家</button>
+				    		<button class="mui-btn mui-btn-lan" style="margin-top:.4em;" v-on:click="trans()" v-if="account">已确认，转币给卖家</button>
+					    	<p class="mui-text-center" v-else>
+								<span class="mui-btn mui-btn-danger mui-btn-outlined">请登陆App</span>
+							</p>
 				    	</li>
 				    </ul>
 				</div>
