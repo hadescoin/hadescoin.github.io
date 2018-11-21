@@ -58,7 +58,12 @@
 				<a class="mui-control-item" href="#item2">已中奖</a>
 			</div>
 		</div>
-		<div v-if="web3===undefined" class="mui-text-center">
+		<div v-if="loaded===false" class="mui-text-center">
+                <div class="mui-loading">
+                    <div class="mui-spinner"></div>
+                </div>
+            </div>
+        <div v-else-if="web3===undefined" class="mui-text-center">
     		<span class="mui-icon mui-icon-close" style="font-size: 5em;"></span>
     		<a href="./download.html" class="mui-btn mui-btn-blue mui-btn-block">
     			请下载或登陆APP
@@ -96,10 +101,10 @@
 					<br>
 					<img class="no-record" src="img/no-record.png" alt="" />
 					<p><br>没有记录<br></p>
-					
 				</div>
 			</div>
 		</div>
+					<p id="debug"></p>
 	</div>
 </body>
 <script src="dist/order.js"></script>
