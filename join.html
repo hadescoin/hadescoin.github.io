@@ -80,7 +80,7 @@
     	</div>
     	<div v-else-if="account===undefined" class="mui-text-center mui-content-padded">
     		<span class="mui-icon mui-icon-close" style="font-size: 5em;"></span>
-    		<p>未检测到您的ETH账号,请确认登陆</p>
+    		<p>未检测到您的HDC账号,请确认登陆</p>
     	</div>
     	<div v-else-if="code==0 && reged" class="mui-text-center mui-content-padded">
     		<span class="mui-icon mui-spinner" style="font-size: 5em;"></span>
@@ -94,12 +94,12 @@
 	    	<h4>返点比例：</h4>
 	    	<p>代理机制为2级制，分别是12%+6%。<br>
 	    	例： 用户C的上级是B，B的上级为是A，<br>
-	    	用户C每投100ETH，B收入12ETH,A收入6ETH。</p>
+	    	用户C每投100 HDC，B收入12 HDC,A收入6 HDC。</p>
 	    	
 	    	<h4>市场保护：</h4>
 	    	<p>为鼓励用户登记自己的代理，帮助代理开拓市场，设立中奖返点2%。<br>
 	    	 即：如果用户登记为代理，则中奖奖金+2%。<br>
-	    	 例：用户中奖100 ETH，则额外奖励该用户 2 ETH。</p>
+	    	 例：用户中奖100 HDC，则额外奖励该用户 2 HDC。</p>
     		<h4>立即登记为代理：</h4>
 	    	<p>
 	    		注册成功后，中奖金额提升2%。<br>
@@ -111,8 +111,8 @@
 					<input type="number" placeholder="6位数字邀请码" v-model="refer">
 				</div>
 				<div class="mui-input-row">
-					<label>ETH地址：</label>
-					<input type="text" placeholder="用于收返点的ETH地址" v-model="account" readOnly>
+					<label>HDC地址：</label>
+					<input type="text" placeholder="用于收返点的HDC地址" v-model="account" readOnly>
 				</div>
 				<div class="mui-button-row">
 					<button class="mui-btn mui-btn-primary" type="button" v-on:click="reg()">&nbsp;&nbsp;登记为代理&nbsp;&nbsp;</button>
