@@ -101,8 +101,8 @@ color : #3b68bb;
 	<div id="app" class="mui-content">	
 		<div style="padding: 10px 10px;">
 			<div id="segmentedControl" class="mui-segmented-control mui-segmented-control-inverted mui-segmented-control-primary">
-				<a class="mui-control-item mui-active" href="#item1">买入ETH</a>
-				<a class="mui-control-item" href="#item2">卖出ETH</a>
+				<a class="mui-control-item mui-active" href="#item1">买入HDC</a>
+				<a class="mui-control-item" href="#item2">卖出HDC</a>
 			</div>
 			<div id="item1" class="mui-control-content mui-active">
 				<div class="mui-card" v-for="(m,k) in mer">
@@ -112,7 +112,7 @@ color : #3b68bb;
 							<div class="mui-pull-left">
 								<p class="name">{{m.xm}}(信誉度：99%)</p>
 								<p>
-									价格：{{price?(price*1.01).toFixed(0)+'元':'市价'}}<br>
+									价格：{{price.toFixed(2)+'元'}}<br>
 									限购：{{m.range}}元
 								</p>
 							</div>
@@ -134,7 +134,7 @@ color : #3b68bb;
 							<div class="mui-pull-left">
 								<p class="name">{{m.xm}}(信誉度：99%)</p>
 								<p>
-									单价：{{price?(price*0.99).toFixed(0)+'元':'市价'}}
+									单价：{{(price*0.99).toFixed(2)+'元'}}
 								</p>
 							</div>
 						</div>
@@ -164,7 +164,7 @@ color : #3b68bb;
 				    		<button type="button" class="copy mui-btn-lan" v-on:click="copy('tel')">复制</button>
 				    	</li>
 				    	<li class="mui-table-view-cell">
-				    		<p>复制ETH地址，发给卖家。<button type="button" class="copy mui-btn-lan" v-on:click="copy('myaddr')">复制</button>
+				    		<p>复制HDC地址，发给卖家。<button type="button" class="copy mui-btn-lan" v-on:click="copy('myaddr')">复制</button>
 				    		</p>
 				    		<span id="myaddr" v-if="account">
 				    			{{account}}
@@ -182,7 +182,7 @@ color : #3b68bb;
 			    <div class="mui-scroll">
 				    <ul class="mui-table-view">
 				    	<li class="mui-table-view-cell">
-				    		<p>请与对方确认数量/价格、ETH地址，再进行转币。</p>
+				    		<p>请与对方确认数量/价格、HDC地址，再进行转币。</p>
 				    	</li>
 				    	<li class="mui-table-view-cell">
 				    		<span class="mui-icon mui-icon-phone-filled"></span>
@@ -197,8 +197,8 @@ color : #3b68bb;
 				    		</p>
 				    	</li>
 				    	<li class="mui-table-view-cell">
-				    		<p>ETH地址:<button type="button" class="copy mui-btn-lan" v-on:click="copy('selladdr')">复制</button>
-				    		<span class="selladdr">{{mer[this.i].eth}}</span>
+				    		<p>HDC地址:<button type="button" class="copy mui-btn-lan" v-on:click="copy('selladdr')">复制</button>
+				    		<span class="selladdr">{{mer[this.i].HDC}}</span>
 				    		</p>
 				    	</li>
 				    	<li class="cfmsell">
