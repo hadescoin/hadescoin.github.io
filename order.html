@@ -79,8 +79,11 @@
 					<li class="mui-table-view-cell mui-media" v-for="c in chips">
 						<img class="mui-media-object mui-pull-left" :src="'img/'+c.product+'.png'">
 						<div class="mui-media-body">
-							{{c.mul.toNumber()}}倍{{c.num}} 
-							<p class="mui-ellipsis">第 {{c.seq.toNumber()}} 期</p>
+							<p class="mui-ellipsis">第 {{c.seq.toNumber()}} 期 &nbsp;{{c.mul.toNumber()}}倍</p>
+                            <span v-if="c.product=='Q3D'">{{c.num.replace(/(0|00)([1-9])+a/g,'和$2,').replace(/[cdefg]/g,',').replace('nnnb','3同号,').replace('xyzh','3连号,').slice(0,-1)}}</span>
+                            <span v-if="c.product=='F3D'">{{c.num.replace(/b/g,',').replace(/(\d{3})(d|c)/g,'[$1],').slice(0,-1)}}</span>
+                            <span v-if="c.product=='Luck28'">{{c.num.replace(/(\d{2})/g,'$1,').slice(0,-1)}}</span>
+							
 						</div>
 					</li>
 				</ul>
@@ -93,8 +96,12 @@
 			</div>
 			<div id="item2" class="mui-control-content">
 				<ul class="mui-table-view" v-if="chips.length>0">
-					<li class="mui-table-view-cell" v-for="b in bonus">
-						+ {{web3.fromWei(b.profit,'finney').toNumber()}}元{{new Date(b.timestamp.toNumber()*1000).toLocaleString()}},{{b.seq}}
+					<li class="mui-table-view-cell mui-media" v-for="b in bonus">
+                        <img class="mui-media-object mui-pull-left" :src="'img/'+b.product+'.png'">
+						<div class="mui-media-body">
+						<p class="mui-ellipsis">第 {{b.seq.toNumber()}} 期,{{new Date(b.timestamp.toNumber()*1000).toLocaleString()}}</p>
+                        + {{web3.fromWei(b.profit,'ether').toNumber()}}元
+                        </div>
 					</li>
 				</ul>
 				<div v-else class="mui-text-center">
