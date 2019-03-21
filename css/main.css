@@ -1,0 +1,113 @@
+.lotHeader{
+	background: #C00;
+}
+.lotHeader h1{
+	color: #FFF;
+}
+.lotHeader .mui-btn-link {
+	color:#FFF;
+}
+#bottomNav {
+	box-shadow:none;
+	background: none;
+}
+.cartBtn {
+	background-color: #f7f7f7;
+	text-align: center;
+}
+
+.mui-bar-nav ~ .mui-content{
+	padding-bottom: 75px;
+}
+
+@font-face {
+    font-family: numberfont;
+    font-weight: normal;
+    font-style: normal;
+
+    src: url('../fonts/digi.ttf') format('truetype');
+}
+
+
+.notice {
+	font-size: .8em;
+	border-right: 1px solid #CCC;
+	text-align: center;
+	color: #333;
+}
+.digi {
+	font-size: 1.4em;
+	font-family: numberfont!important;
+    font-style: normal;
+    color: red;
+}
+
+.trend{padding: .5rem .5rem 0 .5rem;
+border-top:1px solid #CCC ;
+}
+.trendToggleWrap{
+	text-align: center;
+}
+.trendToggle,.trendToggle .mui-icon{
+	font-size: .8em;
+	color: #333;
+}
+
+.lotHeader a.mui-icon{
+	color: #FFF;
+}
+.lotHeader .mui-icon:active{
+	color: #FFF;
+}
+.mui-btn-cart {
+	color: #007aff;
+	border: 1px solid #007aff;
+}
+.modify{
+	display: table-cell;
+	vertical-align: middle;
+    font-size:.6em;
+}
+.modify input{
+	width: 60%;
+	height: 1.5em;
+	padding: 0;
+    color:#C00;
+	text-align: center;
+	display: inline-block;
+}
+table.history {
+	border-collapse: collapse;
+	width: 100%;
+	color: #8f9ab5;
+	border: none;
+}
+.history tr{
+	height: 2em;
+	padding: .2em;
+}
+.history tr:nth-child(even) {
+	background: #f2f5f8;
+}
+.history tr:nth-child(odd) {
+	background: #FFF;
+}
+.history td {
+	text-align: center;
+	vertical-align: middle;
+	border-right: 1px solid #CCC ;
+	border-box : content;
+}
+
+.res {
+    background: rgba(0,0,0,0.6);
+    border-radius: 6px;
+    color: #FCFC00;
+    font-size: 12px;
+    text-align: center;
+    line-height: 1.6em;
+    font-weight: 200;
+}
+[v-cloak] {
+   display:none;
+}
