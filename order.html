@@ -79,8 +79,8 @@
 					<li class="mui-table-view-cell mui-media" v-for="c in chips">
 						<img class="mui-media-object mui-pull-left" :src="'img/'+c.product+'.png'">
 						<div class="mui-media-body">
-							<p class="mui-ellipsis">第 {{c.seq.toNumber()}} 期 &nbsp;{{c.mul.toNumber()}}倍</p>
-                            <span v-if="c.product=='Q3D'">{{c.num.replace(/(0|00)([1-9])+a/g,'和$2,').replace(/[cdefg]/g,',').replace('nnnb','3同号,').replace('xyzh','3连号,').slice(0,-1)}}</span>
+							<p class="mui-ellipsis">第 {{c.seq.toNumber()}} 期 &nbsp;{{web3.fromWei(c.mul,'ether').toString()}}元 / 注</p>
+                            <span v-if="c.product=='Q3D'">{{c.num.replace(/^0+(\d+)a/g,'和$1,').replace(/[cdefg]/g,',').replace('nnnb','3同号,').replace('xyzh','3连号,').slice(0,-1)}}</span>
                             <span v-if="c.product=='F3D'">{{c.num.replace(/b/g,',').replace(/(\d{3})(d|c)/g,'[$1],').slice(0,-1)}}</span>
                             <span v-if="c.product=='Luck28'">{{c.num.replace(/(\d{2})/g,'$1,').slice(0,-1)}}</span>
 							
