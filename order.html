@@ -25,6 +25,9 @@
 .no-record{
 	width:40%;
 }
+.mui-media-body span{
+  word-break:break-all;
+}
 [v-cloak] {
    display:none;
 }
@@ -58,59 +61,61 @@
 				<a class="mui-control-item" href="#item2">已中奖</a>
 			</div>
 		</div>
-		<div v-if="loaded===false" class="mui-text-center">
-                <div class="mui-loading">
-                    <div class="mui-spinner"></div>
+		<div id="lists">
+            <div v-if="loaded===false" class="mui-text-center">
+                    <div class="mui-loading">
+                        <div class="mui-spinner"></div>
+                    </div>
+                </div>
+            <div v-else-if="web3===undefined" class="mui-text-center">
+                <span class="mui-icon mui-icon-close" style="font-size: 5em;"></span>
+                <a href="./download.html" class="mui-btn mui-btn-blue mui-btn-block">
+                    请下载或登陆APP
+                </a>
+            </div>
+            <div v-else-if="account===undefined" class="mui-text-center">
+                <span class="mui-icon mui-icon-close" style="font-size: 5em;"></span>
+                <p>未检测到您的HDC账号,请确认登陆</p>
+            </div>
+            <div v-else class="mui-card">
+                <div id="item1" class="mui-control-content mui-active">
+                    <ul class="mui-table-view" v-if="chips.length>0" v-cloak>
+                        <li class="mui-table-view-cell mui-media" v-for="c in chips">
+                            <img class="mui-media-object mui-pull-left" :src="'img/'+c.product+'.png'">
+                            <div class="mui-media-body">
+                                <p class="mui-ellipsis">第 {{c.seq}} 期 &nbsp;{{c.mul}}元 / 注</p>
+                                <span v-if="c.product=='Q3D'">{{c.num.replace(/0(\d{2})a/g,'和$1,').replace(/[cdefg]/g,',').replace('nnnb','3同号,').replace('xyzh','3连号,').slice(0,-1)}}</span>
+                                <span v-if="c.product=='F3D'">{{c.num.replace(/b/g,',').replace(/(\d{3})(d|c)/g,'[$1],').slice(0,-1)}}</span>
+                                <span v-if="c.product=='Luck28'">{{c.num.replace(/(\d{2})/g,'$1,').slice(0,-1)}}</span>
+                                
+                            </div>
+                        </li>
+                    </ul>
+                    <div v-else class="mui-text-center">
+                        <br>
+                        <img class="no-record" src="img/no-record.png" alt="" />
+                        <p><br>没有记录<br></p>
+                        
+                    </div>
+                </div>
+                <div id="item2" class="mui-control-content">
+                    <ul class="mui-table-view" v-if="bonus.length>0">
+                        <li class="mui-table-view-cell mui-media" v-for="b in bonus">
+                            <img class="mui-media-object mui-pull-left" :src="'img/'+b.product+'.png'">
+                            <div class="mui-media-body">
+                            <p class="mui-ellipsis">第 {{b.seq}} 期,{{new Date(b.timestamp*1000).toLocaleString()}}</p>
+                            + {{b.profit}}元
+                            </div>
+                        </li>
+                    </ul>
+                    <div v-else class="mui-text-center">
+                        <br>
+                        <img class="no-record" src="img/no-record.png" alt="" />
+                        <p><br>没有记录<br></p>
+                    </div>
                 </div>
             </div>
-        <div v-else-if="web3===undefined" class="mui-text-center">
-    		<span class="mui-icon mui-icon-close" style="font-size: 5em;"></span>
-    		<a href="./download.html" class="mui-btn mui-btn-blue mui-btn-block">
-    			请下载或登陆APP
-    		</a>
-    	</div>
-    	<div v-else-if="account===undefined" class="mui-text-center">
-    		<span class="mui-icon mui-icon-close" style="font-size: 5em;"></span>
-    		<p>未检测到您的HDC账号,请确认登陆</p>
-    	</div>
-		<div v-else class="mui-card">
-			<div id="item1" class="mui-control-content mui-active">
-				<ul class="mui-table-view" v-if="chips.length>0" v-cloak>
-					<li class="mui-table-view-cell mui-media" v-for="c in chips">
-						<img class="mui-media-object mui-pull-left" :src="'img/'+c.product+'.png'">
-						<div class="mui-media-body">
-							<p class="mui-ellipsis">第 {{c.seq.toNumber()}} 期 &nbsp;{{web3.fromWei(c.mul,'ether').toString()}}元 / 注</p>
-                            <span v-if="c.product=='Q3D'">{{c.num.replace(/^0+(\d+)a/g,'和$1,').replace(/[cdefg]/g,',').replace('nnnb','3同号,').replace('xyzh','3连号,').slice(0,-1)}}</span>
-                            <span v-if="c.product=='F3D'">{{c.num.replace(/b/g,',').replace(/(\d{3})(d|c)/g,'[$1],').slice(0,-1)}}</span>
-                            <span v-if="c.product=='Luck28'">{{c.num.replace(/(\d{2})/g,'$1,').slice(0,-1)}}</span>
-							
-						</div>
-					</li>
-				</ul>
-				<div v-else class="mui-text-center">
-					<br>
-					<img class="no-record" src="img/no-record.png" alt="" />
-					<p><br>没有记录<br></p>
-					
-				</div>
-			</div>
-			<div id="item2" class="mui-control-content">
-				<ul class="mui-table-view" v-if="chips.length>0">
-					<li class="mui-table-view-cell mui-media" v-for="b in bonus">
-                        <img class="mui-media-object mui-pull-left" :src="'img/'+b.product+'.png'">
-						<div class="mui-media-body">
-						<p class="mui-ellipsis">第 {{b.seq.toNumber()}} 期,{{new Date(b.timestamp.toNumber()*1000).toLocaleString()}}</p>
-                        + {{web3.fromWei(b.profit,'ether').toNumber()}}元
-                        </div>
-					</li>
-				</ul>
-				<div v-else class="mui-text-center">
-					<br>
-					<img class="no-record" src="img/no-record.png" alt="" />
-					<p><br>没有记录<br></p>
-				</div>
-			</div>
-		</div>
+        </div>
 					<p id="debug"></p>
 	</div>
 </body>
