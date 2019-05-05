@@ -87,7 +87,7 @@
                                 <span v-if="c.product=='Q3D'">{{c.num.replace(/0(\d{2})a/g,'和$1,').replace(/[cdefg]/g,',').replace('nnnb','3同号,').replace('xyzh','3连号,').slice(0,-1)}}</span>
                                 <span v-if="c.product=='F3D'">{{c.num.replace(/b/g,',').replace(/(\d{3})(d|c)/g,'[$1],').slice(0,-1)}}</span>
                                 <span v-if="c.product=='Luck28'">{{c.num.replace(/(\d{2})/g,'$1,').slice(0,-1)}}</span>
-                                
+                                <span v-if="c.product=='Eleven'">{{c.num}}</span>
                             </div>
                         </li>
                     </ul>
