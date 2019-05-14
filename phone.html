@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>手机充值</title>
+    <link href="css/mui.min.css" rel="stylesheet"/>
+</head>
+<style>
+.lotHeader{
+	background: #C00;
+}
+.lotHeader h1{
+	color: #FFF;
+}
+.lotHeader .mui-btn-link {
+	color:#FFF;
+}
+.guide,.lots {
+	margin-top: 10px;
+	background: #FFF;
+}
+.guide img{margin: 0 auto;width: 50%;display: block;}
+.guide p{text-align: center;}
+.refer {
+	background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);
+	background-size: 400% 400%;
+	animation: Gradient 15s ease infinite;
+	min-height: 100vh;
+}
+.faces button{
+ width: 90%;
+ margin: 0.4em 0 0 0;
+}
+[v-cloak] {
+   display:none;
+}
+</style>
+<body>
+	<header class="mui-bar mui-bar-nav lotHeader">
+		<a class="mui-action-back mui-btn mui-btn-link mui-btn-nav mui-pull-left"><span class="mui-icon mui-icon-left-nav"></span>返回</a>
+		<h1 class="mui-title">手机充值</h1>
+	</header>
+	<nav class="mui-bar mui-bar-tab" id="bottomNav">
+	    <a href="./index.html" class="mui-tab-item mui-active">
+	        <span class="mui-icon mui-icon-home"></span>
+	        <span class="mui-tab-label">首页</span>
+	    </a>
+	    <a href="./order.html" class="mui-tab-item">
+	        <span class="mui-icon mui-icon-order"></span>
+	        <span class="mui-tab-label">我的注单</span>
+	    </a>
+	    <a href="./agent.html" class="mui-tab-item">
+	        <span class="mui-icon mui-icon-person"></span>
+	        <span class="mui-tab-label">代理收入</span>
+	    </a>
+	    <a href="./faq.html" class="mui-tab-item">
+	        <span class="mui-icon mui-icon-help"></span>
+	        <span class="mui-tab-label">帮助中心</span>
+	    </a>
+	</nav>
+	<div id="app" class="mui-content" v-cloak>
+		<div v-if="loaded===false" class="mui-text-center">
+                <div class="mui-loading">
+                    <div class="mui-spinner"></div>
+                </div>
+            </div>
+        <div v-else-if="web3===undefined" class="mui-text-center mui-content-padded">
+    		<span class="mui-icon mui-icon-close" style="font-size: 5em;"></span>
+    		<a href="./download.html" class="mui-btn mui-btn-blue mui-btn-block">
+    			请下载或登陆APP
+    		</a>
+    	</div>
+    	<div v-else-if="account===undefined" class="mui-text-center mui-content-padded">
+    		<span class="mui-icon mui-icon-close" style="font-size: 5em;"></span>
+    		<p>未检测到您的HDC账号,请确认登陆</p>
+    	</div>
+    	<div class="mui-text-center mui-content-padded">
+			<div class="mui-row">
+				<form class="mui-input-group">
+					<div class="mui-input-row">
+						<label>手机号</label>
+						<input type="text" id="phone" class="mui-input-clear" v-on:keydown="inphone($event)" maxlength="13" v-model="phone">
+					</div>
+				</form>
+			</div>
+			<div class="mui-row faces">	
+				<div class="mui-col-xs-4">
+					<button type="button" class="mui-btn mui-btn-lan mui-btn-outlined" v-bind:disabled='this.phone.length!=13' v-on:click="buy(1)">1元<br>售价1.1元</button>
+				</div>
+				<div class="mui-col-xs-4">
+					<button type="button" class="mui-btn mui-btn-lan mui-btn-outlined" v-bind:disabled='this.phone.length!=13' v-on:click="buy(5)">5元<br>售价5.1元</button>
+				</div>
+				<div class="mui-col-xs-4">
+					<button type="button" class="mui-btn mui-btn-lan mui-btn-outlined" v-bind:disabled='this.phone.length!=13' v-on:click="buy(10)">10元<br>售价10元</button>
+				</div>
+				
+				<div class="mui-col-xs-4">
+					<button type="button" class="mui-btn mui-btn-lan mui-btn-outlined" v-bind:disabled='this.phone.length!=13' v-on:click="buy(20)">20元<br>售价20元</button>
+				</div>
+				<div class="mui-col-xs-4">
+					<button type="button" class="mui-btn mui-btn-lan mui-btn-outlined" v-bind:disabled='this.phone.length!=13' v-on:click="buy(50)">50元<br>售价49.9元</button>
+				</div>
+				<div class="mui-col-xs-4">
+					<button type="button" class="mui-btn mui-btn-lan mui-btn-outlined" v-bind:disabled='this.phone.length!=13' v-on:click="buy(100)">100元<br>售价99.8元</button>
+				</div>
+			</div>
+    	</div>
+    	
+	</div>
+</body>
+<script src="dist/mui.min.js"></script>
+<script src="https://lib.baomitu.com/vue/2.5.21/vue.min.js"></script>
+<script src="dist/phone.js"></script>
+</html>
