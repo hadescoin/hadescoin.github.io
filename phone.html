@@ -80,7 +80,7 @@
 				<form class="mui-input-group">
 					<div class="mui-input-row">
 						<label>手机号</label>
-						<input type="text" id="phone" class="mui-input-clear" v-on:keydown="inphone($event)" maxlength="13" v-model="phone">
+						<input type="text" id="phone" class="mui-input-clear" v-on:input="inphone()" maxlength="13" v-model="phone">
 					</div>
 				</form>
 			</div>
