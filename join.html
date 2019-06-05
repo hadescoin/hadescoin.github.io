@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-    <title>成为代理</title>
+    <title>注册HID</title>
     <link href="css/mui.min.css" rel="stylesheet"/>
 </head>
 <style>
@@ -46,7 +46,7 @@
 <body>
 	<header class="mui-bar mui-bar-nav lotHeader">
 		<a class="mui-action-back mui-btn mui-btn-link mui-btn-nav mui-pull-left"><span class="mui-icon mui-icon-left-nav"></span>返回</a>
-		<h1 class="mui-title">成为代理</h1>
+		<h1 class="mui-title">注册HID</h1>
 	</header>
 	<nav class="mui-bar mui-bar-tab" id="bottomNav">
 	    <a href="./index.html" class="mui-tab-item mui-active">
@@ -84,30 +84,29 @@
     	</div>
     	<div v-else-if="code==0 && reged" class="mui-text-center mui-content-padded">
     		<span class="mui-icon mui-spinner" style="font-size: 5em;"></span>
-    		<p>您已登记，正在生成你的专属邀请码。
+    		<p>您已登记，正在生成你的专属HID。
     			<br>请等待2分钟左右。
     		</p>
     	</div>
     	<div v-else-if="code==0 && !reged" class="mui-content-padded">
-    		<h3>成为代理</h3>
-	    	<p>平台提供行内最具竞争力的丰厚返点。</p>
-	    	<h4>返点比例：</h4>
-	    	<p>代理机制为2级制，分别是12%+6%。<br>
-	    	例： 用户C的上级是B，B的上级为是A，<br>
-	    	用户C每投100 HDC，B收入12 HDC,A收入6 HDC。</p>
-	    	
-	    	<h4>市场保护：</h4>
-	    	<p>为鼓励用户登记自己的代理，帮助代理开拓市场，设立中奖返点2%。<br>
-	    	 即：如果用户登记为代理，则中奖奖金+2%。<br>
-	    	 例：用户中奖100 HDC，则额外奖励该用户 2 HDC。</p>
-    		<h4>立即登记为代理：</h4>
+    		<h3>HID是什么</h3>
+	    	<p>HID是HDC社区身份的标识，所有的权益均需通过HID来计算和获取。</p>
+	    	<h4>作用：</h4>
 	    	<p>
-	    		注册成功后，中奖金额提升2%。<br>
-	    		并可通过邀请码赚返点。
+				HDC拥有系列生态产品，包括但不限于PoS+挖矿、博彩投注返佣、领取奖金，以及商城等。
+				所有产品的代理、返佣、返点等都需要通过HID领取。</p>
+	    	
+	    	<h4>具体权益：</h4>
+	    	<p>区块彩产品设立中奖返点+2%。<br>
+	    	 即：用户注册HID后，则中奖奖金+2%。<br>
+	    	 例：用户中奖100 HDC，则额外奖励该用户 2 HDC。</p>
+	    	<p>
+	    		PoS+挖矿可获得多级奖励<br>
+	    		邀请者可获得下级用户的挖矿奖励，最多达9层。
 	    	</p>
 	    	<form class="mui-input-group">
 				<div class="mui-input-row">
-					<label>邀请码：</label>
+					<label>邀请者HID：</label>
 					<input type="number" placeholder="6位数字邀请码" v-model="refer">
 				</div>
 				<div class="mui-input-row">
@@ -124,7 +123,7 @@
 					<br />
 					<span style="color: orangered;font-size: 1.5em;vertical-align:middle;">区块彩，公平博彩平台！</span>
 				</p>
-				<h4>我的邀请码</h4>
+				<h4>我的HID</h4>
 				<h3>
 					<span id="refercode" style="color: orangered;font-size: 2em;vertical-align:middle;" >{{code}}</span>
 					
@@ -134,7 +133,7 @@
 				<p>
 					<img src="img/qr.png" alt="" />
 				</p>
-				<p>邀请好友注册，获18%交易返点。</p>
+				<p>拥有HID，全站产品赚取返佣</p>
 			</div>
     	</div> 
     	
