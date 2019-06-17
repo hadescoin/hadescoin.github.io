@@ -83,7 +83,7 @@
 					<li class="mui-table-view-cell mui-media" v-for="p in profits">
 						<img class="mui-media-object mui-pull-left" src="./img/coin.png">
 						<div class="mui-media-body">
-							+ {{web3.fromWei(p.profit,'finney').toNumber()}}元
+							+ {{web3.fromWei(p.profit).toNumber()}}元
 							<p class="mui-ellipsis">{{new Date(p.timestamp.toNumber()*1000).toLocaleString()}}</p>
 						</div>
 					</li>
