@@ -98,14 +98,16 @@
 </body>
 <script src="dist/mui.min.js"></script>
 <script>
+mui.ready(()=>{
+	if(mui.os.wechat!==undefined) {
+		var mask = mui.createMask(function(){
+			return false;
+		});
+		mask.show();//显示遮罩
+		mui('.mui-backdrop')[0].innerHTML = '<img style="width:100%" src="img/live_weixin.png">';
+	}
+});
 mui.init();
-if(mui.os.wechat!==undefined) {
-	var mask = mui.createMask(function(){
-		return false;
-	});
-	mask.show();//显示遮罩
-	mui('.mui-backdrop')[0].innerHTML = '<img style="width:100%" src="img/live_weixin.png">';
-}
 document.getElementById('ios').onclick = function() {
 	//document.getElementById('stepa').style.display = 'block';
 	mui.toast('暂不支持IOS');
