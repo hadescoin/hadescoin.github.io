@@ -67,7 +67,7 @@
 		<a class="mui-action-back mui-btn mui-btn-link mui-btn-nav mui-pull-left" href="index.html"><span class="mui-icon mui-icon-left-nav"></span>返回</a>
 		<h1 class="mui-title">APP下载</h1>
 	</header>
-	<div id="app" class="mui-content">	
+	<div id="app" class="mui-content" style="display: none;">	
 		<div class="qr">
 			<br><br>
 			<img src="./img/downqr.png" alt="" />
@@ -106,6 +106,7 @@ mui.ready(()=>{
 		mask.show();//显示遮罩
 		mui('.mui-backdrop')[0].innerHTML = '<img style="width:100%" src="img/live_weixin.png">';
 	}
+	document.getElementById('app').style.display = 'block';
 });
 mui.init();
 document.getElementById('ios').onclick = function() {
